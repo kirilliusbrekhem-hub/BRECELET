@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRACELET | Браслеты ручной работы</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f8f8f8;
+color:#222;
+}
+
+header{
+background:#111;
+color:white;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.cart-btn{
+background:#fff;
+color:#111;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:linear-gradient(135deg,#111,#444);
+color:white;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.hero-content p{
+font-size:20px;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 30px;
+background:#fff;
+color:#111;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.catalog{
+padding:80px 8%;
+}
+
+.catalog h2{
+text-align:center;
+margin-bottom:50px;
+font-size:38px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.buy-btn{
+width:100%;
+padding:12px;
+border:none;
+background:#111;
+color:white;
+cursor:pointer;
+border-radius:8px;
+font-size:16px;
+}
+
+.cart{
+position:fixed;
+right:-400px;
+top:0;
+width:350px;
+height:100%;
+background:white;
+box-shadow:-5px 0 20px rgba(0,0,0,.15);
+padding:25px;
+transition:.3s;
+overflow:auto;
+}
+
+.cart.active{
+right:0;
+}
+
+.cart h2{
+margin-bottom:20px;
+}
+
+.cart-item{
+margin-bottom:15px;
+border-bottom:1px solid #ddd;
+padding-bottom:10px;
+}
+
+.order-btn{
+display:block;
+text-align:center;
+background:#111;
+color:white;
+padding:15px;
+margin-top:20px;
+text-decoration:none;
+border-radius:8px;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:60px;
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:40px;
+}
+
+nav{
+display:none;
+}
+
+.cart{
+width:100%;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">BRACELET</div>
+
+<nav>
+<ul>
+<li><a href="#">Главная</a></li>
+<li><a href="#catalog">Каталог</a></li>
+<li><a href="#contacts">Контакты</a></li>
+</ul>
+</nav>
+
+<div class="cart-btn" onclick="toggleCart()">
+🛒 <span id="cart-count">0</span>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Браслеты ручной работы</h1>
+<p>Стильные аксессуары для каждого дня</p>
+<a href="#catalog" class="btn">Посмотреть каталог</a>
+</div>
+</section>
+
+<section class="catalog" id="catalog">
+
+<h2>Наши браслеты</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://picsum.photos/500/500?1">
+<div class="card-content">
+<h3>Черный минимализм</h3>
+<div class="price">990 ₽</div>
+<button class="buy-btn" onclick="addToCart('Черный минимализм',990)">
+Добавить в корзину
+</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/500/500?2">
+<div class="card-content">
+<h3>Кожаный браслет</h3>
+<div class="price">1290 ₽</div>
+<button class="buy-btn" onclick="addToCart('Кожаный браслет',1290)">
+Добавить в корзину
+</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/500/500?3">
+<div class="card-content">
+<h3>Натуральный камень</h3>
+<div class="price">1490 ₽</div>
+<button class="buy-btn" onclick="addToCart('Натуральный камень',1490)">
+Добавить в корзину
+</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/500/500?4">
+<div class="card-content">
+<h3>Премиум коллекция</h3>
+<div class="price">1990 ₽</div>
+<button class="buy-btn" onclick="addToCart('Премиум коллекция',1990)">
+Добавить в корзину
+</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<div class="cart" id="cart">
+
+<h2>Корзина</h2>
+
+<div id="cart-items"></div>
+
+<h3 id="total">Итого: 0 ₽</h3>
+
+<a
+id="orderLink"
+class="order-btn"
+href="mailto:BRECELET@gmail.com?subject=Заказ с сайта BRACELET"
+>
+Заказать
+</a>
+
+</div>
+
+<footer id="contacts">
+<p>BRACELET © 2026</p>
+<p>Email: BRECELET@gmail.com</p>
+</footer>
+
+<script>
+
+let cart = [];
+let total = 0;
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("active");
+}
+
+function addToCart(name,price){
+
+cart.push({name,price});
+
+total += price;
+
+document.getElementById("cart-count").textContent = cart.length;
+
+renderCart();
+}
+
+function renderCart(){
+
+const container = document.getElementById("cart-items");
+
+container.innerHTML = "";
+
+cart.forEach(item=>{
+
+container.innerHTML += `
+<div class="cart-item">
+${item.name} - ${item.price} ₽
+</div>
+`;
+
+});
+
+document.getElementById("total").textContent =
+`Итого: ${total} ₽`;
+
+let text = cart.map(item =>
+`${item.name} - ${item.price} ₽`
+).join('%0D%0A');
+
+document.getElementById("orderLink").href =
+`mailto:BRECELET@gmail.com?subject=Заказ BRACELET&body=${text}%0D%0A%0D%0AИтого: ${total} ₽`;
+
+}
+
+</script>
+
+</body>
+</html>
